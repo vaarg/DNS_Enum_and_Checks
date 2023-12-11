@@ -19,13 +19,13 @@ for MX_DOMAIN in $MX_RECORDS; do
     # Get IPs for MX domain
     IPs=$(dig +short $MX_DOMAIN)
 
-    # Check if each IP is alive
+    # Check if each IP is alive using nmap
     for ip in $IPs; do
-        echo "Pinging $ip..."
-        if ping -c 1 $ip &> /dev/null; then
+        echo "Checking $ip with nmap..."
+        if nmap -sn $ip | grep -q "Host is up"; then
             echo "$ip is alive."
         else
-            echo "$ip is not responding."
+            echo "$ip is not responding or blocked."
         fi
     done
 done
