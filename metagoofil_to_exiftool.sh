@@ -9,7 +9,7 @@ read DOMAIN
 
 # Run metagoofil with the entered domain & download files
 mkdir ./Downloaded_Files
-metagoofil -d "$DOMAIN" -t pdf,doc,xls,ppt,docx,xlsx,pptx -n 20 -o Downloaded_Files -f "metagoofil_${DOMAIN}.html"
+metagoofil -d "$DOMAIN" -t pdf,doc,xls,ppt,docx,xlsx,pptx -n 20 -o Downloaded_Files -f "metagoofil_${DOMAIN}.html" -w
 
 # Run Exiftool on every downloaded file and saves to file.
 for file in ./Downloaded_Files/*; do 
